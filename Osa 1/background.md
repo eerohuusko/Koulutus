@@ -149,31 +149,3 @@ Common attacks on mobile devices [@mobile]:
 
 Zero day attack is any kind of attack that uses recently published vulnerabilities and relies on usage of not up-to-date software [@zero].
 
-# Mirai botnet
-
-## Introduction
-
-Mirai (未来) is malware designed for building large scale botnet of IoT devices. The bot and related programs was created by Anna-senpai, firstly discovered
-and researched by MalwareMustDie in the end of August 2016. In reply to their blog post, one month later, Anna-sepai published sources and manual on how 
-to build and run botnet, while pointing out mistakes in analysis and humiliating unixfreaxjp, author of post.
-
-Mirai bot searches network for devices with telnet/ssh port open and bruteforces several most common and default passwords. Because users of IoT devices 
-often do not much care about their security, large portion of them is vulnerable to attack. And because of large quantity of IoT devices, Mirai botnet
-can grow to hundreds of thousands of hosts.
-
-After Mirai infects host, it updates passwords to make it secure against other bots. Mirai does not install itself to target device but only stays in RAM.
-This behavior was an obstacle for researches, because the only way of getting binary was dump from memory.
-
-In attack mode Mirai has several builtin strategies: 
-
-  0. UDP flood `ATK_VEC_UDP`
-  1. Valve Source Engine query flood `ATK_VEC_VSE`
-  2. DNS water torture `ATK_VEC_DNS`
-  3. SYN flood `ATK_VEC_SYN`
-  4. ACK flood `ATK_VEC_ACK`
-  5. ACK flood to bypass mitigation devices `ATK_VEC_STOMP`
-  6. GRE IP flood `ATK_VEC_GREIP`
-  7. GRE Ethernet flood `ATK_VEC_GREIP`
-  8. Proxy knockback connection `ATK_VEC_PROXY`
-  9. Plain UDP flood optimized for speed `ATK_VEC_UDP_PLAIN`
-  10. HTTP layer 7 flood `ATK_VEC_HTTP`
