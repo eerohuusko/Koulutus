@@ -40,7 +40,7 @@ Who has 192.168.0.5? Tell 192.168.0.53
 ````
 In this case the attacker has IP address 192.168.0.53.
 
-If we see many of these ARP requests in a short period of time asking for many different IP addresses, someone is probably trying to discover alive IPs on our network by ARP scanning (e.g. by running arp-scan -l).
+If we see many of these ARP requests in a short period of time asking for many different IP addresses, someone is probably trying to discover alive IPs on our network by ARP scanning (e.g. ```by running arp-scan -l```).
 
 ## IP Protocol scan
 
@@ -50,7 +50,7 @@ Here’s a Wireshark filter to identify IP protocol scans:
 
 This is how IP protocol scan looks like in Wireshark:
 ![](https://gitlab.dclabra.fi/wiki/uploads/upload_c33018b0ed883819fe9e22b2fe8db0af.png)
-IP protocol scanning is a technique allowing an attacker to discover which network protocols are supported by the target operating system (e.g. by running nmap -sO <target>).
+IP protocol scanning is a technique allowing an attacker to discover which network protocols are supported by the target operating system (e.g. by running ```nmap -sO <target>```).
 
 During IP protocol scanning, we will likely see many ICMP type 3 (Destination unreachable) code 2 (Protocol unreachable) messages, because the attacker is typically sending a large number of packets with different protocol numbers.
     
