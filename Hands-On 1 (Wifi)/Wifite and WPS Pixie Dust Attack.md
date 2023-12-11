@@ -134,8 +134,9 @@ EXAMPLE
 
 ![](https://gitlab.dclabra.fi/wiki/uploads/upload_e19005ed77bddc7c83da9591bbb61bc5.png)
 
-And the next one commad....
+salasanat.xt is the name of the dictionary file (specify the full path if the file is not located in the same directory)
 
+And the next one commad....
 
 ````
 aircrack-ng -w /home/kali/salasanat.txt /home/kali/01.pcap
