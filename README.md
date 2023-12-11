@@ -18,3 +18,13 @@ Tails: https://tails.net/index.en.html
 
 Pick a Vulnerability to Learn About: https://www.hacksplaining.com/lessons
 
+VulnHub: https://www.vulnhub.com/resources/
+
+Crack WPA/WPA2 Wi-Fi Passwords with Pyrit: https://medium.com/@frost1/crack-wpa-wpa2-wi-fi-passwords-with-pyrit-b25c71d6a0b6
+
+# Here are some links for Mysql Injection
+
+What is an SQL Injection Cheat Sheet?: https://www.invicti.com/blog/web-security/sql-injection-cheat-sheet/
+
+
+
