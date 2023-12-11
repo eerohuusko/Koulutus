@@ -44,6 +44,7 @@ Toinen esimerkki SQL injektiosta, jossa hyökkääjä hyödyntää haavoittuvaa 
 2. Käynnistä mysql serveri
 
 ```sudo service mysql start```
+
 ![Sudo service](image.png)
 
 
