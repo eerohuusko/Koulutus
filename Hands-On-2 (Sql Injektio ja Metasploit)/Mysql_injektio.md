@@ -50,7 +50,7 @@ Toinen esimerkki SQL injektiosta, jossa hyökkääjä hyödyntää haavoittuvaa 
 
 3. Tehdään vähän tietokantaa, johon hyökätään. Kalin terminaalissa kirjaudu mysql
 serverille.
-``````
+```
 sudo mysql -u root
 create user 'dummy'@'localhost' identified by 'pass';
 GRANT ALL PRIVILEGES ON sample.* TO 'dummy'@'localhost';
