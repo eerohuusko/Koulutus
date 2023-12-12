@@ -54,23 +54,28 @@ Nowadays almost all network cards support the monitor mode and  supports both 2.
 
 ## Handshake Capture - Prepare your Wi-Fi adapter
 
-But first open terminal and type
-
-![](https://gitlab.dclabra.fi/wiki/uploads/upload_ebf956451397e70c9df4bfdda669a2c6.png)
-
-
-And then kill all the adapter processes to run without restriction.
-
-Go to the terminal and execute this command:
+Don't use the ```airmon-ng check kill``` command to fix any errors or problems, instead, use the following commands to start monitor mode:
 ```
-airmon-ng check kill
+sudo ifconfig wlan0 down
+sudo iwconfig wlan0 mode monitor
+sudo ifconfig wlan0 up
+sudo aireplay-ng wlan0
 ```
 
-Now wpa_supplicant was successfully stopped
+
+If wpa_supplicant are stopped....
 
 * Switch down wlan0 interface with: ```ifconfig wlan0 down```
 * Turn on the monitor mode with: ```iwconfig wlan0 mode monitor```
+* Turn on the managed mode with: ```iwconfig wlan0 mone managed```
+* Check status with: ```airmon-ng check```
 * Switch on wlan0 interface with: ```ifconfig wlan0 up```
+* Start airmon-ng with: ```airmon-ng start wlan0```
+
+Run ```iwconfig```. 
+
+You should now see a new monitor mode interface listed (likely mon0 or wlan0mon)
+
 
 ## Scan all the available networks
 
@@ -78,12 +83,7 @@ List down all the surrounding networks with:
 ```
 airodump-ng wlan0mon
 ```
-
-Run ```iwconfig```. 
-
-You should now see a new monitor mode interface listed (likely mon0 or wlan0mon)
-
-## Capture the handshake
+# Capture the handshake
 
 Run this command:
 ```
@@ -93,8 +93,8 @@ airodump-ng –channel {channel id} –bssid {BSSID}
 
 **EXAMPLE** 
 ```
-airodump-ng –channel 12 –bssid 01:34:5C:56:2D:A5 –essid 
-Tp-Link -w /home/kali/Documents wlan0mon
+airodump-ng -- channel 12 -- bssid 01:34:5C:56:2D:A5 -- essid 
+Tp-Link -- write /home/kali/Documents wlan0mon
 ```
 ## Deauthenticate clients from target access point
 

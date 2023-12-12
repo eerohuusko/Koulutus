@@ -67,6 +67,14 @@ insert into userdata (Name, Country) values ('Eero', 'FI'), ('Mikko','FI'), ('Ma
 5. Nyt on python ja MySQL valmiina. Mutta MySQL:n käyttämiseen Pythonilla
 tarvitaan MySQL-connector. Asenna mysql connector ajamalla seuraava komento
 KaliLinuxin terminaalissa. Huom. Ei siis mysql terminaalissa!
+```
+pip install mysql-connector-python
+```
+6. Koodaa seuraava Python koodi
+
+Nimeä koodi injektio.py samalla kun käynnistät nano-editorin.
+
+sudo nano injektio.py 
 
 ```
 import mysql.connector

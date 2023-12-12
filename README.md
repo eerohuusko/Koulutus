@@ -26,5 +26,15 @@ Crack WPA/WPA2 Wi-Fi Passwords with Pyrit: https://medium.com/@frost1/crack-wpa-
 
 What is an SQL Injection Cheat Sheet?: https://www.invicti.com/blog/web-security/sql-injection-cheat-sheet/
 
+Penetraatiotestaus työkaluja: https://attack.mitre.org/
+
+#Palautekysely: https://link.webropolsurveys.com/Participation/Public/2b414d63-766c-4eb4-9e9d-5fac210e2744?displayId=Fin2971707
+       
+     
+   
+     
+
+
+
 
 
