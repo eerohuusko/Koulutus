@@ -60,6 +60,8 @@ sudo ifconfig wlan0 down
 sudo iwconfig wlan0 mode monitor
 sudo ifconfig wlan0 up
 sudo aireplay-ng wlan0
+sudo systemctl stop wpa_supplicant
+sudo service NetworkManager stop
 ```
 
 
@@ -76,11 +78,42 @@ Run ```iwconfig```.
 
 You should now see a new monitor mode interface listed (likely mon0 or wlan0mon)
 
+# 1. Cracking Wifi passwords automatically with Wifite
 
-## Scan all the available networks
+Wifite is installed by default on Kali Linux. Just like any wireless password cracking method, Wifite needs monitor mode to be enabled on the wireless interface as shown below. However, it automatically enables this monitor mode but if it fails to enable it, you can enable it manually as shown below. 
+
+```
+sudo airmon-ng start wlan0
+```
+
+```
+iwconfig
+```
+Let’s see how Wifite works in cracking WEP, WPA and WPS enabled networks. Once everything is ready, open terminal and start Wifite using command as shown below.
+
+```sudo wifite ```
+
+![Alt text](image.png)
+
+It starts displaying all the wireless networks in your vicinity as shown below.
+
+![Alt text](image-1.png)
+
+Once you select the access point you want to target, hit CTRl + C and enter the number of that access point. In our case it is “1”.
+
+As soon as you enter the number of that access point, Wifite tries out various attacks against the access point and grabs its password as shown below.
+
+![Alt text](image-2.png)
+
+As you can see, Wifite is successful in cracking WEP, WPA and WPS keys automatically without running any complex commands .
+Learn how to crack Wifi passwords with Besside-ng: https://www.hackercoolmagazine.com/besside-ng-a-tool-to-hack-wi-fi-automatically/ 
+
+
+# 2.Scan all the available networks
 
 List down all the surrounding networks with:
 ```
+sudo airmon-ng start wlan0
 airodump-ng wlan0mon
 ```
 # Capture the handshake
@@ -94,7 +127,7 @@ airodump-ng –channel {channel id} –bssid {BSSID}
 **EXAMPLE** 
 ```
 airodump-ng -- channel 12 -- bssid 01:34:5C:56:2D:A5 -- essid 
-Tp-Link -- write /home/kali/Documents wlan0mon
+IoT_tietoturva -- write  01
 ```
 ## Deauthenticate clients from target access point
 
@@ -105,7 +138,7 @@ aireplay-ng -0 0 -e {ESSID} -a bssid wlan0mon –ig
 
 EXAMPLE 
 ```
-aireplay-ng -0 0 -e Tp-Link -a 01:34:5C:56:2D:A5 wlan0mon –ig
+aireplay-ng -0 0 -e IoT_tietoturva -a 01:34:5C:56:2D:A5 wlan0mon –ig
 ````
 Now we wait… Once you’ve captured a handshake, you should see something like [ WPA handshake: bc:d3:c9:ef:d2:67 at the top right of the screen, just right of the current time.
 Our deauthentication attack is successful when we see the captured handshakes. 
@@ -139,7 +172,7 @@ salasanat.xt is the name of the dictionary file (specify the full path if the fi
 And the next one commad....
 
 ````
-aircrack-ng -w /home/kali/salasanat.txt /home/kali/01.pcap
+aircrack-ng -w /home/kali/salasanat.txt 01.pcap
 ````
 
 It will now take time for your computer to process all the words from your wordlist. Once the password is found, you will see it next to the “**KEY FOUND**”.
@@ -150,7 +183,7 @@ The most disappointing thing was finding out you actually need a prepared databa
 
 
 
-## WPS Pixie Dust Attack
+# 3.  WPS Pixie Dust Attack
 
 A Pixie-Dust attack works by bruteforcing the key for a protocol called WPS. WPS was intended to make accessing a router easier, and it did - for attackers.
 
@@ -239,10 +272,10 @@ Finally, execute the full WPS protocol to get the credentials of the wireless ac
 ![](https://gitlab.dclabra.fi/wiki/uploads/upload_f4b6b3a63163d3a937459bd6fb0f466c.png)
 
 
-## WPS Pixie Dust Attack 2  (Raspberry Pi) solutions
+# 4. WPS Pixie Dust Attack 2  (Raspberry Pi) solutions
 
 
-## ## Step 1. - Download All Dependencies
+## Step 1. - Download All Dependencies
 
 It's important to download all dependencies from the repository before proceeding with the attack. Kali Linux includes some of these, but if you're using another flavor of Linux, it may not. So let's go through all of them.
 
