@@ -254,9 +254,8 @@ root             (?)
 1g 0:00:00:01 DONE 3/3 (2023-12-13 11:36) 0.9708g/s 5464Kp/s 5464Kc/s 5464KC/s roob..rooo
 Use the "--show" option to display all of the cracked passwords reliably
 Session completed. 
-                                                                                                                                                   
-┌──(parallels㉿kali-gnu-linux-2023)-[~]
-└─$ 
+
+More details: https://vk9-sec.com/cracking-password-john-the-ripper/
 ```
 
 
