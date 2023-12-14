@@ -28,9 +28,20 @@ What is an SQL Injection Cheat Sheet?: https://www.invicti.com/blog/web-security
 
 Penetraatiotestaus työkaluja: https://attack.mitre.org/
 
-#Palautekysely: https://link.webropolsurveys.com/Participation/Public/2b414d63-766c-4eb4-9e9d-5fac210e2744?displayId=Fin2971707
 
 Aircrack-ng: https://www.aircrack-ng.org/doku.php?id=Main
+
+# Team Whack
+
+Team Whack iskee taloyhtiöön: https://areena.yle.fi/1-4664683
+
+Team Whack sieppaa kotisi langattomat laitteet: https://areena.yle.fi/1-50418775
+
+
+
+# Palautekysely:
+
+ https://link.webropolsurveys.com/Participation/Public/2b414d63-766c-4eb4-9e9d-5fac210e2744?displayId=Fin2971707
 
 
 
