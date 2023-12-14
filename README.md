@@ -37,6 +37,11 @@ Team Whack iskee taloyhtiöön: https://areena.yle.fi/1-4664683
 
 Team Whack sieppaa kotisi langattomat laitteet: https://areena.yle.fi/1-50418775
 
+Edukamu: https://cs.edukamu.fi/cybersecurity-fundamentals
+
+Cisco Ethical Hacker: https://skillsforall.com/course/ethical-hacker?courseLang=en-US
+
+
 
 
 # Palautekysely:
